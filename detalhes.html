@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Filme</title>
+    <link rel="stylesheet" type="text/css" href="detalhes.css" />
+</head>
+
+<body>
+    <header class="header">
+        <h1><img src="imgs-site/imgInicio.png" alt="Logo" /></h1>
+        <!--<button id="toggleTheme">🌙 Alternar Tema</button>-->
+    </header>
+
+    <main class="filme-detalhe">
+        <section class="descricao">
+            <div class="poster-slider" id="posterSlider"></div>
+
+            <div class="texto">
+                <!-- Conteúdo do filme será preenchido via JS -->
+            </div>
+        </section>
+
+        <section class="trailer">
+            <h3>🎞️ Trailer</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" src="" title="Trailer do Filme" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 IFilmes - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Pega o ID do filme da URL
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get("id"));
+
+            // Procura o filme pelo ID
+            const filme = filmes.find(f => f.id === id);
+
+            if (!filme) {
+                document.querySelector(".filme-detalhe").innerHTML =
+                    "<p>Filme não encontrado.</p>";
+                return;
+            }
+
+            // Preenche os dados do filme
+            const textoDiv = document.querySelector(".texto");
+            textoDiv.innerHTML = `
+          <h2>${filme.titulo}</h2>
+          <br />
+          <p><strong>Sinopse:</strong> ${filme.sinopse}</p>
+          <br />
+          <p><strong>Gênero:</strong> ${filme.genero}</p>
+          <br />
+          <p><strong>Lançamento:</strong> ${filme.lancamento}</p>
+        `;
+
+            // Preenche o slider com os posters
+            const slider = document.getElementById("posterSlider");
+            slider.innerHTML = "";
+            filme.posters.forEach((src, i) => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.classList.add("poster");
+                if (i === 0) img.classList.add("active");
+                slider.appendChild(img);
+            });
+
+            // Slider automático
+            let current = 0;
+            const posters = slider.querySelectorAll(".poster");
+            setInterval(() => {
+                posters[current].classList.remove("active");
+                current = (current + 1) % posters.length;
+                posters[current].classList.add("active");
+            }, 3000); // troca a cada 3s
+
+
+
+            // Carrega o trailer
+            document.querySelector(".video-container iframe").src = youtubeEmbed(filme.trailer);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+// "Base de dados"
 const filmes = [{
     id: 1,
     titulo: "Wicked: Parte 2",
@@ -259,18 +260,6 @@ function sortearFilme() {
                 </div>
             `;
     container.appendChild(card);
-}
-
-// Função para salvar favoritos no localStorage
-function adicionarFavorito(titulo) {
-    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-    if (!favoritos.includes(titulo)) {
-        favoritos.push(titulo);
-        localStorage.setItem("favoritos", JSON.stringify(favoritos));
-        alert(`${titulo} adicionado aos favoritos!`);
-    } else {
-        alert(`${titulo} já está nos favoritos!`);
-    }
 }
 
 function youtubeEmbed(link) {

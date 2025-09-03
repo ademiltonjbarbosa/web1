@@ -42,7 +42,7 @@
 }
 
 .links ul li a:hover {
-    background-color: #1e9e1e;
+    background-color: #d63031;
 }
 
 /* Responsividade simples */
@@ -65,67 +65,8 @@
     }
 }
 
-
-/*Estilizacao da NavBar
-.nav-bar {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    background-color: rgb(42, 213, 42);
-}
-
-.img-home {
-    width: 200px;
-    height: 100%;
-}
-
-img {
-    width: 200px;
-}
-
-li {
-    list-style: none;
-}
-
-a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    height: 100%;
-    padding: 5px;
-    padding-top: 25px;
-}
-
-a:hover {
-    background-color: blue;
-}
-
-.links {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: end;
-    height: 100%;
-
-}
-
-ul {
-    display: block;
-    height: 100%;
-
-}
-
-.links ul li {
-    display: inline-block;
-
-    margin-left: 20px;
-    margin-right: 5px;
-    height: 100%;
-
-}
-*/
 /*Estilizacao do conteudo principal*/
-/* Conteúdo principal */
+
 .conteudo-principal {
     width: 90%;
     max-width: 1200px;
@@ -176,7 +117,7 @@ ul {
 /* Título */
 .sinopse-filme h1 {
     font-size: 1.5em;
-    color: #333;
+    color: #d63031;
     margin-bottom: 10px;
 }
 
@@ -241,4 +182,11 @@ ul {
 #btn-sorteio:active {
     transform: translateY(1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+  background: #1a1a1a;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
 }
